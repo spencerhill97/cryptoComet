@@ -1,20 +1,42 @@
 import { Stack, Pagination } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 
-const CoinsPagination = ({ handleChange, numberOfPages }) => {
+const CoinsPagination = ({
+  handleChange,
+  numberOfPages,
+  navigateToSearchBar,
+}) => {
   const XXS = useMediaQuery("(max-width: 330px)");
   const SM = useMediaQuery("(min-width: 330px)");
-  const MD = useMediaQuery("(min-width: 600px)");
+
+  const theme = useTheme();
+
+  const paginationStyles = {
+    "& .MuiButtonBase-root": {
+      backgroundColor: theme.palette.custom.white,
+    },
+  };
 
   return (
-    <Stack direction="row" sx={{ justifyContent: "center" }}>
+    <Stack
+      direction="row"
+      sx={{
+        justifyContent: "center",
+        paddingTop: "25px",
+        paddingBottom: "25px",
+      }}
+    >
       <Pagination
         variant="outlined"
         defaultPage={1}
-        size={(XXS && "small") || (SM && "medium") || (MD && "large")}
+        size={(XXS && "medium") || (SM && "large")}
         onChange={handleChange}
         count={numberOfPages}
-        sx={{ paddingTop: "25px", paddingBottom: "25px" }}
+        sx={paginationStyles}
+        siblingCount={0}
+        color="primary"
+        onClick={navigateToSearchBar}
       />
     </Stack>
   );

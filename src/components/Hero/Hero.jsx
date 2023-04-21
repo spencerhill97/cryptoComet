@@ -1,4 +1,4 @@
-import { Grid, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import Caption from "./Caption";
 import Title from "./Title";
@@ -19,7 +19,7 @@ const Hero = ({ coins }) => {
   };
 
   return (
-    <Stack spacing={2} sx={container}>
+    <Stack component="header" spacing={2} sx={container}>
       <Title />
       <Caption />
       <Carousel coins={coins} />

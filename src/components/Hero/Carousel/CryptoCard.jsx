@@ -17,7 +17,7 @@ const CryptoCard = ({
       xs: "150px",
     },
     height: "100%",
-    color: "blue",
+    color: "black",
     margin: "15px auto",
     "&.MuiPaper-root": {
       paddingTop: "15px",

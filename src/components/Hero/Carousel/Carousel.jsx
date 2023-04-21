@@ -1,15 +1,11 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import axios from "axios";
 import { Container } from "@mui/material";
-import { useState } from "react";
-import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import CryptoCard from "./CryptoCard";
 
 const Carousel = ({ coins }) => {
-  const theme = useTheme();
   const SM = useMediaQuery("(min-width: 600px)");
   const MD = useMediaQuery("(min-width: 900px)");
   const LG = useMediaQuery("(min-width: 1200px)");
@@ -22,7 +18,7 @@ const Carousel = ({ coins }) => {
     autoplaySpeed: 3000,
     speed: 3000,
     arrows: false,
-    centerMode: SM ? true : false,
+    centerMode: LG ? false : SM ? true : false,
     pauseOnHover: true,
   };
 

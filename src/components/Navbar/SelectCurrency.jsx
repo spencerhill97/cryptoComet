@@ -27,7 +27,7 @@ const SelectCurrency = ({ currency, handleChange }) => {
   };
 
   return (
-    <FormControl sx={{ marginRight: "10px" }}>
+    <FormControl sx={{ marginRight: "10px" }} component="form">
       <Select
         value={currency}
         onChange={handleChange}
@@ -38,15 +38,14 @@ const SelectCurrency = ({ currency, handleChange }) => {
           PaperProps: {
             sx: {
               "& .MuiMenuItem-root.Mui-selected": {
-                backgroundColor: theme.palette.purple["A100"],
+                backgroundColor: theme.palette.purple[100],
                 color: "black",
               },
               "& .MuiMenuItem-root:hover": {
                 backgroundColor: theme.palette.purple[50],
               },
               "& .MuiMenuItem-root.Mui-selected:hover": {
-                backgroundColor: theme.palette.purple[300],
-                color: "white",
+                backgroundColor: theme.palette.purple[100],
               },
             },
           },

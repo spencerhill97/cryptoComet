@@ -7,9 +7,11 @@ const Navbar = ({ currency, handleChange }) => {
   const theme = useTheme();
 
   const navStyles = {
+    "&.MuiPaper-root": {
+      position: "static",
+    },
     "&.MuiToolbar-root": {
       padding: "0",
-      position: "static",
       backgroundColor: theme.palette.purple[700],
       flexGrow: "1",
       width: "100%",
@@ -30,7 +32,7 @@ const Navbar = ({ currency, handleChange }) => {
   };
 
   return (
-    <AppBar>
+    <AppBar component="nav" sx={navStyles}>
       <Toolbar sx={navStyles}>
         <Typography variant="h5" component="h6">
           Crypto Comet

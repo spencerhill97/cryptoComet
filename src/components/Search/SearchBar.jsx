@@ -2,7 +2,7 @@ import { TextField, Stack } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import PoweredBy from "./PoweredBy";
 
-const SearchBar = () => {
+const SearchBar = ({ searchBarReference }) => {
   const theme = useTheme();
 
   const searchBarStyles = {
@@ -12,13 +12,15 @@ const SearchBar = () => {
         xs: "90%",
         sm: "80%",
       },
+      maxWidth: "1280px",
       paddingBottom: "35px",
       "& fieldset": {
         borderColor: theme.palette.purple["A100"],
-        borderWidth: "2px",
+        borderWidth: ".15rem",
       },
       "&:hover fieldset": {
         borderColor: "white",
+        borderWidth: ".17rem",
       },
     },
     "& .MuiInputBase-root": {
@@ -40,12 +42,14 @@ const SearchBar = () => {
 
   return (
     <Stack
+      ref={searchBarReference}
       sx={{
         alignItems: "center",
         paddingTop: "25px",
         backgroundColor: theme.palette.purple[700],
       }}
       spacing={2}
+      component="section"
     >
       <PoweredBy />
       <TextField
@@ -53,6 +57,7 @@ const SearchBar = () => {
         label="Search for Crypto Currency..."
         variant="outlined"
         sx={searchBarStyles}
+        component="form"
       />
     </Stack>
   );

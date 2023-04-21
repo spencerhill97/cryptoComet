@@ -16,7 +16,7 @@ const Caption = () => {
   };
 
   return (
-    <Typography variant="subtitle1" component="h2" sx={caption}>
+    <Typography variant="subtitle1" component="p" sx={caption}>
       Stay on top of your crypto game with our powerful search and tracking
       capabilities.
     </Typography>

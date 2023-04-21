@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useRef } from "react";
 import CoinRow from "./CoinRow";
 import CoinsPagination from "./Pagination/CoinsPagination";
 import { useTheme } from "@mui/material/styles";
@@ -13,26 +13,22 @@ import {
 } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 
-const CoinTable = ({ coins }) => {
-  const [page, setPage] = useState(0);
+const CoinTable = ({ coins, navigateToSearchBar }) => {
+  const [page, setPage] = useState(1);
   const [rows, setRows] = useState(10);
 
-  console.log(coins.length);
+  const theme = useTheme();
+  const SM = useMediaQuery("(min-width: 600px)");
 
   const numberOfPages = Math.ceil((coins.length - 1) / rows);
 
-  console.log(numberOfPages);
+  const startingIndex = (page - 1) * rows;
+  const endingIndex = startingIndex + rows;
 
   const handleChange = (e, newPage) => {
     setPage(newPage);
     return;
   };
-
-  const startingIndex = page * rows;
-  const endingIndex = page * rows + rows;
-
-  const theme = useTheme();
-  const SM = useMediaQuery("(min-width: 600px)");
 
   const tableStyles = {
     "&.MuiContainer-root": {
@@ -44,19 +40,21 @@ const CoinTable = ({ coins }) => {
       paddingTop: SM && "35px",
     },
     "& .MuiTableContainer-root": {
-      margin: "0 auto",
       width: (SM && "80%") || "100%",
+      maxWidth: "1280px",
+      margin: "0 auto",
       borderRadius: SM && "8px",
       border: SM && "1px solid" + theme.palette.purple[100],
     },
     "& .MuiTableHead-root": {
-      backgroundColor: theme.palette.purple[200],
+      backgroundColor: theme.palette.purple[300],
       th: {
+        fontSize: {
+          xxs: "16px",
+          sm: "20px",
+        },
         textAlign: "center",
-        color: theme.palette.custom.purpleFont,
-      },
-      "th:first-of-type": {
-        textAlign: "left",
+        color: "white",
       },
     },
     "& .MuiTableBody-root": {
@@ -65,8 +63,8 @@ const CoinTable = ({ coins }) => {
   };
 
   return (
-    <Container sx={tableStyles}>
-      <TableContainer>
+    <Container sx={tableStyles} component="section">
+      <TableContainer component="article">
         <Table>
           <TableHead>
             <TableRow>
@@ -86,6 +84,7 @@ const CoinTable = ({ coins }) => {
       <CoinsPagination
         handleChange={handleChange}
         numberOfPages={numberOfPages}
+        navigateToSearchBar={navigateToSearchBar}
       />
     </Container>
   );
