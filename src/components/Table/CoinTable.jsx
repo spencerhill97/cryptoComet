@@ -60,6 +60,9 @@ const CoinTable = ({ coins, navigateToSearchBar }) => {
     "& .MuiTableBody-root": {
       backgroundColor: "white",
     },
+    "& .MuiTableCell-root": {
+      padding: "0 !important",
+    },
   };
 
   return (
