@@ -1,10 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
-import axios from "axios";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
 import { CssBaseline } from "@mui/material";
 import Loading from "./components/Loading";
-// import Login from "./components/Login";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Search from "./components/Search";
@@ -27,27 +25,6 @@ const App = () => {
   const navigateToSearchBar = () => {
     searchBarReference.current?.scrollIntoView({ block: "start" });
   };
-
-  // const fetchCoins = async () => {
-  //   setLoading(true);
-  //   try {
-  //     const data = await axios
-  //       .get(
-  //         "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false&locale=en"
-  //       )
-  //       .then((res) => {
-  //         setCoins(res.data);
-  //         setLoading(false);
-  //       });
-  //   } catch (error) {
-  //     setLoading(false);
-  //     console.log(error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchCoins();
-  // }, []);
 
   /*==========DUMMY DATA BELOW!============*/
 
