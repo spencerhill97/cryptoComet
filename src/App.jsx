@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import axios from "axios";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
 import { CssBaseline } from "@mui/material";
@@ -9,7 +10,9 @@ import Search from "./components/Search";
 import Table from "./components/Table";
 
 /*===========DUMMY DATA ===========*/
-import { dummyData, currencies } from "./data";
+import { currencies } from "./data/currencies";
+import { dummyData } from "./data/dummydata";
+import { FetchCoinList } from "./services/coinServices";
 
 const App = () => {
   const [currency, setCurrency] = useState("USD");
@@ -25,6 +28,21 @@ const App = () => {
   const navigateToSearchBar = () => {
     searchBarReference.current?.scrollIntoView({ block: "start" });
   };
+
+  // const fetchCoins = async () => {
+  //   try {
+  //     const response = await axios.get(FetchCoinList(currency));
+  //     setCoins(response.data);
+  //     setLoading(false);
+  //   } catch (error) {
+  //     console.log(error);
+  //     setLoading(false);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchCoins();
+  // }, [activeSymbol]);
 
   /*==========DUMMY DATA BELOW!============*/
 

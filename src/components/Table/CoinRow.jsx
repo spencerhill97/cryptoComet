@@ -42,6 +42,11 @@ const CoinRow = ({
     },
     td: {
       whiteSpace: "nowrap",
+      padding: "16px 20px 16px 16px",
+      width: "25%",
+    },
+    "td:first-of-type": {
+      padding: "16px 16px",
     },
   };
 

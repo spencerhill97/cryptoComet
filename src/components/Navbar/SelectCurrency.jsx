@@ -1,6 +1,6 @@
 import { useTheme, withTheme } from "@mui/material/styles";
 import { Box, FormControl, MenuItem, Select } from "@mui/material";
-import { currencies } from "../../data";
+import { currencies } from "../../data/currencies";
 
 const SelectCurrency = ({ currency, handleChange }) => {
   const theme = useTheme();

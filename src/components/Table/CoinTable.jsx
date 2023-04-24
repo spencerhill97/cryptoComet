@@ -56,6 +56,7 @@ const CoinTable = ({ coins, navigateToSearchBar, activeSymbol }) => {
       },
       "th:first-of-type": {
         textAlign: "left",
+        paddingLeft: "55px",
       },
     },
     "& .MuiTableBody-root": {
