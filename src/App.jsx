@@ -9,17 +9,17 @@ import Search from "./components/Search";
 import Table from "./components/Table";
 
 /*===========DUMMY DATA ===========*/
-import { dummyData } from "./data";
+import { dummyData, currencies } from "./data";
 
 const App = () => {
   const [currency, setCurrency] = useState("USD");
+  const [activeSymbol, setActiveSymbol] = useState("$");
   const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(true);
   const searchBarReference = useRef(null);
 
   const handleChange = (event) => {
     setCurrency(event.target.value);
-    return;
   };
 
   const navigateToSearchBar = () => {
@@ -44,6 +44,16 @@ const App = () => {
     fetchCoins();
   }, []);
 
+  useEffect(() => {
+    const changeSymbol = () => {
+      const newSymbol = currencies.filter(
+        (element) => element.id === currency
+      )[0].unicode;
+      setActiveSymbol(newSymbol);
+    };
+    changeSymbol();
+  }, [currency]);
+
   if (loading) {
     return <Loading />;
   }
@@ -53,9 +63,13 @@ const App = () => {
       <CssBaseline />
       <Navbar handleChange={handleChange} currency={currency} />
       {/* <Login /> */}
-      <Hero coins={coins} />
+      <Hero coins={coins} activeSymbol={activeSymbol} />
       <Search searchBarReference={searchBarReference} />
-      <Table coins={coins} navigateToSearchBar={navigateToSearchBar} />
+      <Table
+        coins={coins}
+        navigateToSearchBar={navigateToSearchBar}
+        activeSymbol={activeSymbol}
+      />
     </ThemeProvider>
   );
 };

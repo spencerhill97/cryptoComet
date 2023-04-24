@@ -7,6 +7,7 @@ const CryptoCard = ({
   image,
   current_price,
   price_change_percentage_24h,
+  activeSymbol,
 }) => {
   const theme = useTheme();
 
@@ -89,9 +90,9 @@ const CryptoCard = ({
             textAlign: "center",
           }}
         >
-          $
-          {current_price.toString().length >= 8
-            ? current_price.toString().slice(0, 8)
+          {activeSymbol}{" "}
+          {current_price.toString().length >= 7
+            ? current_price.toString().slice(0, 7)
             : current_price}
         </Typography>
       </CardContent>

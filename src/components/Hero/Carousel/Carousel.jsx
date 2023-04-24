@@ -5,7 +5,7 @@ import { Container } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import CryptoCard from "./CryptoCard";
 
-const Carousel = ({ coins }) => {
+const Carousel = ({ coins, activeSymbol }) => {
   const SM = useMediaQuery("(min-width: 600px)");
   const MD = useMediaQuery("(min-width: 900px)");
   const LG = useMediaQuery("(min-width: 1200px)");
@@ -36,7 +36,9 @@ const Carousel = ({ coins }) => {
     <Container className="carousel" sx={containerStyles}>
       <Slider {...settings}>
         {coins.slice(0, 20).map((coin) => {
-          return <CryptoCard key={coin.id} {...coin} />;
+          return (
+            <CryptoCard key={coin.id} activeSymbol={activeSymbol} {...coin} />
+          );
         })}
       </Slider>
     </Container>

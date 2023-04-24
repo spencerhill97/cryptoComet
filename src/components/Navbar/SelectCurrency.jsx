@@ -1,5 +1,6 @@
 import { useTheme, withTheme } from "@mui/material/styles";
 import { Box, FormControl, MenuItem, Select } from "@mui/material";
+import { currencies } from "../../data";
 
 const SelectCurrency = ({ currency, handleChange }) => {
   const theme = useTheme();
@@ -57,9 +58,14 @@ const SelectCurrency = ({ currency, handleChange }) => {
           },
         }}
       >
-        <MenuItem value={"USD"}>USD</MenuItem>
-        <MenuItem value={"EUR"}>EUR</MenuItem>
-        <MenuItem value={"CAN"}>CAN</MenuItem>
+        {currencies.map((currency) => {
+          const { id } = currency;
+          return (
+            <MenuItem key={id} value={id}>
+              {id}
+            </MenuItem>
+          );
+        })}
       </Select>
     </FormControl>
   );

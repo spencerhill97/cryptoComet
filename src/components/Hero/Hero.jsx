@@ -4,7 +4,7 @@ import Caption from "./Caption";
 import Title from "./Title";
 import Carousel from "./Carousel/";
 
-const Hero = ({ coins }) => {
+const Hero = ({ coins, activeSymbol }) => {
   const theme = useTheme();
 
   const container = {
@@ -22,7 +22,7 @@ const Hero = ({ coins }) => {
     <Stack component="header" spacing={2} sx={container}>
       <Title />
       <Caption />
-      <Carousel coins={coins} />
+      <Carousel coins={coins} activeSymbol={activeSymbol} />
     </Stack>
   );
 };

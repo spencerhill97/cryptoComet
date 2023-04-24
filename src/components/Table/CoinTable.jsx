@@ -12,7 +12,7 @@ import {
   Container,
 } from "@mui/material";
 
-const CoinTable = ({ coins, navigateToSearchBar }) => {
+const CoinTable = ({ coins, navigateToSearchBar, activeSymbol }) => {
   const [page, setPage] = useState(1);
   const [rows, setRows] = useState(10);
 
@@ -87,7 +87,9 @@ const CoinTable = ({ coins, navigateToSearchBar }) => {
           </TableHead>
           <TableBody>
             {coins.slice(startingIndex, endingIndex).map((coin) => {
-              return <CoinRow key={coin.id} {...coin} />;
+              return (
+                <CoinRow key={coin.id} activeSymbol={activeSymbol} {...coin} />
+              );
             })}
           </TableBody>
         </Table>

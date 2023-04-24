@@ -1,3 +1,9 @@
+export const currencies = [
+  { id: "USD", unicode: "$" },
+  { id: "IND", unicode: "\u20B9" },
+  { id: "EUR", unicode: "\u20AC" },
+];
+
 export const historicalData = {
   prices: [
     [1681516800000, 30468.40870059078],

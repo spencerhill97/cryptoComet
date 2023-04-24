@@ -7,6 +7,7 @@ const CoinRow = ({
   image,
   current_price,
   price_change_percentage_24h,
+  activeSymbol,
 }) => {
   const theme = useTheme();
 
@@ -38,6 +39,9 @@ const CoinRow = ({
         md: "65px",
       },
       objectFit: "cover",
+    },
+    td: {
+      whiteSpace: "nowrap",
     },
   };
 
@@ -74,7 +78,7 @@ const CoinRow = ({
         sx={{ color: theme.palette.custom.grayFont }}
         className="sharedText"
       >
-        {current_price}
+        {`${activeSymbol} ${current_price}`}
       </TableCell>
       <TableCell
         sx={{
@@ -92,7 +96,7 @@ const CoinRow = ({
         sx={{ color: theme.palette.custom.grayFont }}
         className="sharedText"
       >
-        $35,090.34
+        {`${activeSymbol} 35,090.34`}
       </TableCell>
     </TableRow>
   );
