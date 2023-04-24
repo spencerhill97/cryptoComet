@@ -24,6 +24,9 @@ const SelectCurrency = ({ currency, handleChange }) => {
     "& .MuiSvgIcon-root": {
       color: theme.palette.custom.white,
     },
+    ul: {
+      padding: "0",
+    },
   };
 
   return (
@@ -46,6 +49,9 @@ const SelectCurrency = ({ currency, handleChange }) => {
               },
               "& .MuiMenuItem-root.Mui-selected:hover": {
                 backgroundColor: theme.palette.purple[100],
+              },
+              ul: {
+                padding: "0",
               },
             },
           },

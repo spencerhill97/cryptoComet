@@ -17,7 +17,7 @@ const theme = createTheme({
       black: "#212121",
       white: "#f9f6ee",
       grayFont: "#565b5f",
-      purpleFont: "#311432",
+      purpleFont: "#0d0046",
       positive: "#118C4F",
       negative: "#FF3131",
       coinGecko: "#8dc647",

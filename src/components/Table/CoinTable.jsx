@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState } from "react";
 import CoinRow from "./CoinRow";
 import CoinsPagination from "./Pagination/CoinsPagination";
 import { useTheme } from "@mui/material/styles";
@@ -11,14 +11,57 @@ import {
   TableBody,
   Container,
 } from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
 
 const CoinTable = ({ coins, navigateToSearchBar }) => {
   const [page, setPage] = useState(1);
   const [rows, setRows] = useState(10);
 
   const theme = useTheme();
-  const SM = useMediaQuery("(min-width: 600px)");
+  const tableStyles = {
+    "&.MuiContainer-root": {
+      minWidth: "100%",
+      paddingLeft: "0",
+      paddingRight: "0",
+      backgroundColor: theme.palette.purple[50],
+      paddingBottom: {
+        sm: "35px",
+      },
+      paddingTop: {
+        sm: "35px",
+      },
+    },
+    "& .MuiTableContainer-root": {
+      width: {
+        xxs: "100%",
+        sm: "80%",
+      },
+      maxWidth: "1280px",
+      margin: "0 auto",
+      borderRadius: {
+        sm: "8px",
+      },
+      border: {
+        sm: "1px solid" + theme.palette.purple[100],
+      },
+    },
+    "& .MuiTableHead-root": {
+      backgroundColor: theme.palette.purple[300],
+      th: {
+        fontSize: {
+          xxs: "16px",
+          sm: "20px",
+        },
+        textAlign: "center",
+        color: "#0d0046",
+      },
+      "th:first-of-type": {
+        textAlign: "left",
+      },
+    },
+    "& .MuiTableBody-root": {
+      backgroundColor: "white",
+    },
+  };
 
   const numberOfPages = Math.ceil((coins.length - 1) / rows);
 
@@ -30,43 +73,8 @@ const CoinTable = ({ coins, navigateToSearchBar }) => {
     return;
   };
 
-  const tableStyles = {
-    "&.MuiContainer-root": {
-      minWidth: "100%",
-      paddingLeft: "0",
-      paddingRight: "0",
-      backgroundColor: theme.palette.purple[50],
-      paddingBottom: SM && "35px",
-      paddingTop: SM && "35px",
-    },
-    "& .MuiTableContainer-root": {
-      width: (SM && "80%") || "100%",
-      maxWidth: "1280px",
-      margin: "0 auto",
-      borderRadius: SM && "8px",
-      border: SM && "1px solid" + theme.palette.purple[100],
-    },
-    "& .MuiTableHead-root": {
-      backgroundColor: theme.palette.purple[300],
-      th: {
-        fontSize: {
-          xxs: "16px",
-          sm: "20px",
-        },
-        textAlign: "center",
-        color: "white",
-      },
-    },
-    "& .MuiTableBody-root": {
-      backgroundColor: "white",
-    },
-    "& .MuiTableCell-root": {
-      padding: "0 !important",
-    },
-  };
-
   return (
-    <Container sx={tableStyles} component="section">
+    <Container component="section" sx={tableStyles}>
       <TableContainer component="article">
         <Table>
           <TableHead>

@@ -32,7 +32,7 @@ const Navbar = ({ currency, handleChange }) => {
   };
 
   return (
-    <AppBar component="nav" sx={navStyles}>
+    <AppBar component="nav" sx={{ width: "100%" }}>
       <Toolbar sx={navStyles}>
         <Typography variant="h5" component="h6">
           Crypto Comet
