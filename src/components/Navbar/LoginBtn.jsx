@@ -1,7 +1,7 @@
 import { useTheme } from "@mui/material/styles";
 import { Button } from "@mui/material";
 
-const LoginBtn = () => {
+const LoginBtn = ({ toggleLoginDashboard, loginDashboard }) => {
   const theme = useTheme();
 
   const loginBtn = {
@@ -17,7 +17,11 @@ const LoginBtn = () => {
   };
 
   return (
-    <Button size="large" sx={loginBtn}>
+    <Button
+      size="large"
+      sx={loginBtn}
+      onClick={() => toggleLoginDashboard(!loginDashboard)}
+    >
       Login
     </Button>
   );

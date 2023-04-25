@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Search from "./components/Search";
 import Table from "./components/Table";
+import Login from "./components/Login";
 
 /*===========DUMMY DATA ===========*/
 import { currencies } from "./data/currencies";
@@ -19,6 +20,7 @@ const App = () => {
   const [activeSymbol, setActiveSymbol] = useState("$");
   const [coins, setCoins] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loginDashboard, toggleLoginDashboard] = useState(false);
   const searchBarReference = useRef(null);
 
   const handleChange = (event) => {
@@ -34,6 +36,7 @@ const App = () => {
   //     const response = await axios.get(FetchCoinList(currency));
   //     setCoins(response.data);
   //     setLoading(false);
+  //     console.log(response);
   //   } catch (error) {
   //     console.log(error);
   //     setLoading(false);
@@ -79,8 +82,18 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Navbar handleChange={handleChange} currency={currency} />
-      {/* <Login /> */}
+      <Navbar
+        handleChange={handleChange}
+        currency={currency}
+        toggleLoginDashboard={toggleLoginDashboard}
+        loginDashboard={loginDashboard}
+      />
+      {loginDashboard && (
+        <Login
+          toggleLoginDashboard={toggleLoginDashboard}
+          loginDashboard={loginDashboard}
+        />
+      )}
       <Hero coins={coins} activeSymbol={activeSymbol} />
       <Search searchBarReference={searchBarReference} />
       <Table

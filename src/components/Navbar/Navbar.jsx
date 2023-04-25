@@ -3,7 +3,12 @@ import { AppBar, Box, Toolbar, Typography } from "@mui/material";
 import SelectCurrency from "./SelectCurrency";
 import LoginBtn from "./LoginBtn";
 
-const Navbar = ({ currency, handleChange }) => {
+const Navbar = ({
+  currency,
+  handleChange,
+  toggleLoginDashboard,
+  loginDashboard,
+}) => {
   const theme = useTheme();
 
   const navStyles = {
@@ -38,7 +43,10 @@ const Navbar = ({ currency, handleChange }) => {
           Crypto Comet
         </Typography>
         <SelectCurrency handleChange={handleChange} currency={currency} />
-        <LoginBtn />
+        <LoginBtn
+          toggleLoginDashboard={toggleLoginDashboard}
+          loginDashboard={loginDashboard}
+        />
       </Toolbar>
     </AppBar>
   );
