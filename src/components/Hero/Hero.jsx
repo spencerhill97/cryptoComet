@@ -3,8 +3,9 @@ import { useTheme } from "@mui/material/styles";
 import Caption from "./Caption";
 import Title from "./Title";
 import Carousel from "./Carousel/";
+import { useGlobalContext } from "../../context/GobalContext";
 
-const Hero = ({ coins, activeSymbol }) => {
+const Hero = () => {
   const theme = useTheme();
 
   const container = {
@@ -22,7 +23,7 @@ const Hero = ({ coins, activeSymbol }) => {
     <Stack component="header" spacing={2} sx={container}>
       <Title />
       <Caption />
-      <Carousel coins={coins} activeSymbol={activeSymbol} />
+      <Carousel />
     </Stack>
   );
 };

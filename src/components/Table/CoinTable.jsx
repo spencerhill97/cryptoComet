@@ -11,8 +11,10 @@ import {
   TableBody,
   Container,
 } from "@mui/material";
+import { useGlobalContext } from "../../context/GobalContext";
 
-const CoinTable = ({ coins, navigateToSearchBar, activeSymbol }) => {
+const CoinTable = () => {
+  const { coinList } = useGlobalContext();
   const [page, setPage] = useState(1);
   const [rows, setRows] = useState(10);
 
@@ -56,7 +58,7 @@ const CoinTable = ({ coins, navigateToSearchBar, activeSymbol }) => {
       },
       "th:first-of-type": {
         textAlign: "left",
-        paddingLeft: "55px",
+        paddingLeft: "30px",
       },
     },
     "& .MuiTableBody-root": {
@@ -64,7 +66,7 @@ const CoinTable = ({ coins, navigateToSearchBar, activeSymbol }) => {
     },
   };
 
-  const numberOfPages = Math.ceil((coins.length - 1) / rows);
+  const numberOfPages = Math.ceil((coinList.length - 1) / rows);
 
   const startingIndex = (page - 1) * rows;
   const endingIndex = startingIndex + rows;
@@ -87,10 +89,8 @@ const CoinTable = ({ coins, navigateToSearchBar, activeSymbol }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {coins.slice(startingIndex, endingIndex).map((coin) => {
-              return (
-                <CoinRow key={coin.id} activeSymbol={activeSymbol} {...coin} />
-              );
+            {coinList.slice(startingIndex, endingIndex).map((coin) => {
+              return <CoinRow key={coin.id} {...coin} />;
             })}
           </TableBody>
         </Table>
@@ -98,7 +98,6 @@ const CoinTable = ({ coins, navigateToSearchBar, activeSymbol }) => {
       <CoinsPagination
         handleChange={handleChange}
         numberOfPages={numberOfPages}
-        navigateToSearchBar={navigateToSearchBar}
       />
     </Container>
   );

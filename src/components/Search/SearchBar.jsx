@@ -1,9 +1,11 @@
 import { TextField, Stack } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import PoweredBy from "./PoweredBy";
+import { useGlobalContext } from "../../context/GobalContext";
 
-const SearchBar = ({ searchBarReference }) => {
+const SearchBar = () => {
   const theme = useTheme();
+  const { searchBarReference } = useGlobalContext();
 
   const searchBarStyles = {
     "&.MuiFormControl-root": {

@@ -1,8 +1,10 @@
 import { useTheme, withTheme } from "@mui/material/styles";
 import { Box, FormControl, MenuItem, Select } from "@mui/material";
 import { currencies } from "../../data/currencies";
+import { useGlobalContext } from "../../context/GobalContext";
 
-const SelectCurrency = ({ currency, handleChange }) => {
+const SelectCurrency = () => {
+  const { currency, handleCurrencyChange } = useGlobalContext();
   const theme = useTheme();
 
   const selectStyles = {
@@ -34,7 +36,7 @@ const SelectCurrency = ({ currency, handleChange }) => {
     <FormControl sx={{ marginRight: "10px" }} component="form">
       <Select
         value={currency}
-        onChange={handleChange}
+        onChange={handleCurrencyChange}
         displayEmpty
         inputProps={{ "aria-label": "Without label" }}
         sx={selectStyles}

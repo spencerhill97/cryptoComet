@@ -1,7 +1,9 @@
 import { useTheme } from "@mui/material/styles";
 import { Button } from "@mui/material";
+import { useGlobalContext } from "../../context/GobalContext";
 
-const LoginBtn = ({ toggleLoginDashboard, loginDashboard }) => {
+const LoginBtn = () => {
+  const { toggleLoginDashboard, loginDashboard } = useGlobalContext();
   const theme = useTheme();
 
   const loginBtn = {

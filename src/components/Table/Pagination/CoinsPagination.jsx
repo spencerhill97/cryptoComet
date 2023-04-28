@@ -1,12 +1,10 @@
 import { Stack, Pagination } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
+import { useGlobalContext } from "../../../context/GobalContext";
 
-const CoinsPagination = ({
-  handleChange,
-  numberOfPages,
-  navigateToSearchBar,
-}) => {
+const CoinsPagination = ({ handleChange, numberOfPages }) => {
+  const { navigateToSearchBar } = useGlobalContext();
   const XXS = useMediaQuery("(max-width: 330px)");
   const SM = useMediaQuery("(min-width: 330px)");
 

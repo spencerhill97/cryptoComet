@@ -1,5 +1,6 @@
 import { TableRow, TableCell, Stack, Typography, Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
+import { useGlobalContext } from "../../context/GobalContext";
 
 const CoinRow = ({
   id,
@@ -7,8 +8,8 @@ const CoinRow = ({
   image,
   current_price,
   price_change_percentage_24h,
-  activeSymbol,
 }) => {
+  const { activeSymbol, insertComma } = useGlobalContext();
   const theme = useTheme();
 
   const tableRowStyles = {
@@ -83,7 +84,7 @@ const CoinRow = ({
         sx={{ color: theme.palette.custom.grayFont }}
         className="sharedText"
       >
-        {`${activeSymbol} ${current_price}`}
+        {`${activeSymbol} ${insertComma(current_price)}`}
       </TableCell>
       <TableCell
         sx={{

@@ -4,8 +4,10 @@ import Slider from "react-slick";
 import { Container } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import CryptoCard from "./CryptoCard";
+import { useGlobalContext } from "../../../context/GobalContext";
 
-const Carousel = ({ coins, activeSymbol }) => {
+const Carousel = () => {
+  const { coinList } = useGlobalContext();
   const SM = useMediaQuery("(min-width: 600px)");
   const MD = useMediaQuery("(min-width: 900px)");
   const LG = useMediaQuery("(min-width: 1200px)");
@@ -35,10 +37,8 @@ const Carousel = ({ coins, activeSymbol }) => {
   return (
     <Container className="carousel" sx={containerStyles}>
       <Slider {...settings}>
-        {coins.slice(0, 20).map((coin) => {
-          return (
-            <CryptoCard key={coin.id} activeSymbol={activeSymbol} {...coin} />
-          );
+        {coinList.slice(0, 20).map((coin) => {
+          return <CryptoCard key={coin.id} {...coin} />;
         })}
       </Slider>
     </Container>

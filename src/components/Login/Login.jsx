@@ -4,15 +4,17 @@ import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import { useTheme } from "@mui/material/styles";
 import LoginTabs from "./Tabs";
+import { useGlobalContext } from "../../context/GobalContext";
 
-const Login = ({ toggleLoginDashboard, loginDashboard }) => {
+const Login = () => {
+  const { toggleLoginDashboard, loginDashboard } = useGlobalContext();
+  const theme = useTheme();
+
   const [showPassword, setShowPassword] = useState(false);
   const [currentTab, setCurrentTab] = useState("one");
   const ref = useRef(null);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
-
-  const theme = useTheme();
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();

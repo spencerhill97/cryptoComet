@@ -1,5 +1,6 @@
 import { useTheme } from "@mui/material/styles";
 import { Card, CardMedia, CardContent, Typography, Stack } from "@mui/material";
+import { useGlobalContext } from "../../../context/GobalContext";
 
 const CryptoCard = ({
   id,
@@ -7,8 +8,8 @@ const CryptoCard = ({
   image,
   current_price,
   price_change_percentage_24h,
-  activeSymbol,
 }) => {
+  const { activeSymbol, insertComma } = useGlobalContext();
   const theme = useTheme();
 
   const cardStyles = {
@@ -37,6 +38,7 @@ const CryptoCard = ({
         sx={{
           width: "50px",
           height: "50px",
+          cursor: "pointer",
         }}
         image={image}
         title={id}
@@ -92,8 +94,8 @@ const CryptoCard = ({
         >
           {activeSymbol}{" "}
           {current_price.toString().length >= 7
-            ? current_price.toString().slice(0, 7)
-            : current_price}
+            ? insertComma(current_price.toString().slice(0, 7))
+            : insertComma(current_price)}
         </Typography>
       </CardContent>
     </Card>
