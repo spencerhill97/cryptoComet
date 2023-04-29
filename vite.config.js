@@ -4,5 +4,5 @@ import axios from "axios";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), axios()],
+  plugins: [react()],
 });
