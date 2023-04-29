@@ -1,10 +1,9 @@
-import { useTheme, withTheme } from "@mui/material/styles";
-import { Box, FormControl, MenuItem, Select } from "@mui/material";
-import { currencies } from "../../data/currencies";
+import { useTheme } from "@mui/material/styles";
+import { FormControl, MenuItem, Select } from "@mui/material";
 import { useGlobalContext } from "../../context/GobalContext";
 
 const SelectCurrency = () => {
-  const { currency, handleCurrencyChange } = useGlobalContext();
+  const { currency, currencies, handleCurrencyChange } = useGlobalContext();
   const theme = useTheme();
 
   const selectStyles = {
@@ -64,7 +63,7 @@ const SelectCurrency = () => {
           const { id } = currency;
           return (
             <MenuItem key={id} value={id}>
-              {id}
+              {id.toUpperCase()}
             </MenuItem>
           );
         })}

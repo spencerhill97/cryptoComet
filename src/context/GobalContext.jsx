@@ -1,16 +1,18 @@
 import { useContext, createContext, useState, useEffect, useRef } from "react";
-import { dummyData } from "../data/dummydata";
+import axios from "axios";
+import { fetchCoinList } from "../services/coinServices";
 import { currencies } from "../data/currencies";
 import { insertComma } from "../utilities/insertComma";
+import { roundNumber } from "../utilities/roundNumber";
 
 const GlobalContext = createContext();
 
 export const useGlobalContext = () => useContext(GlobalContext);
 
 const AppContext = ({ children }) => {
-  const [coinList, setCoinList] = useState([]);
   const [isLoading, setLoading] = useState(true);
-  const [currency, setCurrency] = useState("USD");
+  const [coinList, setCoinList] = useState([]);
+  const [currency, setCurrency] = useState("usd");
   const [activeSymbol, setActiveSymbol] = useState("$");
   const [loginDashboard, toggleLoginDashboard] = useState(false);
   const searchBarReference = useRef(null);
@@ -25,9 +27,9 @@ const AppContext = ({ children }) => {
 
   const fetchCoins = async () => {
     try {
-      const res = await dummyData;
+      const res = await axios.get(fetchCoinList(currency));
       setLoading(false);
-      setCoinList(res);
+      setCoinList(res.data);
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -36,7 +38,7 @@ const AppContext = ({ children }) => {
 
   useEffect(() => {
     fetchCoins();
-  }, []);
+  }, [currency]);
 
   const changeSymbol = () => {
     const newSymbol = currencies.filter((element) => element.id === currency)[0]
@@ -51,12 +53,15 @@ const AppContext = ({ children }) => {
   const value = {
     coinList,
     isLoading,
+    currencies,
     currency,
     handleCurrencyChange,
     loginDashboard,
     toggleLoginDashboard,
     activeSymbol,
     insertComma,
+    roundNumber,
+    navigateToSearchBar,
   };
 
   return (

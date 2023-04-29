@@ -9,7 +9,7 @@ const CryptoCard = ({
   current_price,
   price_change_percentage_24h,
 }) => {
-  const { activeSymbol, insertComma } = useGlobalContext();
+  const { activeSymbol, insertComma, roundNumber } = useGlobalContext();
   const theme = useTheme();
 
   const cardStyles = {
@@ -88,14 +88,14 @@ const CryptoCard = ({
           component="p"
           sx={{
             color: theme.palette.custom.purpleFont,
-            fontSize: { xxs: "16px", xs: "24px" },
+            fontSize: { xxs: "16px", xs: "20px" },
             textAlign: "center",
           }}
         >
           {activeSymbol}{" "}
-          {current_price.toString().length >= 7
-            ? insertComma(current_price.toString().slice(0, 7))
-            : insertComma(current_price)}
+          {current_price > 1
+            ? insertComma(roundNumber(current_price))
+            : current_price}
         </Typography>
       </CardContent>
     </Card>

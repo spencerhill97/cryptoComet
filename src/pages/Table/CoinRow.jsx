@@ -8,6 +8,7 @@ const CoinRow = ({
   image,
   current_price,
   price_change_percentage_24h,
+  market_cap,
 }) => {
   const { activeSymbol, insertComma } = useGlobalContext();
   const theme = useTheme();
@@ -84,7 +85,9 @@ const CoinRow = ({
         sx={{ color: theme.palette.custom.grayFont }}
         className="sharedText"
       >
-        {`${activeSymbol} ${insertComma(current_price)}`}
+        {`${activeSymbol} ${
+          current_price < 1 ? current_price : insertComma(current_price)
+        }`}
       </TableCell>
       <TableCell
         sx={{
@@ -102,7 +105,7 @@ const CoinRow = ({
         sx={{ color: theme.palette.custom.grayFont }}
         className="sharedText"
       >
-        {`${activeSymbol} 35,090.34`}
+        {`${activeSymbol} ${insertComma(market_cap)}`}
       </TableCell>
     </TableRow>
   );

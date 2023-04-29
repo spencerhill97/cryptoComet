@@ -1,5 +1,5 @@
 export const currencies = [
-  { id: "USD", unicode: "$" },
-  { id: "INR", unicode: "\u20B9" },
-  { id: "EUR", unicode: "\u20AC" },
+  { id: "usd", unicode: "$" },
+  { id: "inr", unicode: "\u20B9" },
+  { id: "eur", unicode: "\u20AC" },
 ];

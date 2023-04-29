@@ -1,13 +1,12 @@
-import React, { useEffect, useState, useRef } from "react";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./theme";
 import { CssBaseline } from "@mui/material";
-import Loading from "./components/Loading";
-import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import Search from "./components/Search";
-import Table from "./components/Table";
-import Login from "./components/Login";
+import Loading from "./pages/Loading";
+import Navbar from "./pages/Navbar";
+import Hero from "./pages/Hero";
+import Search from "./pages/Search";
+import Table from "./pages/Table";
+import Login from "./pages/Login";
 import { useGlobalContext } from "./context/GobalContext";
 
 const App = () => {
