@@ -61,7 +61,7 @@ function CoinChart() {
           margin={{
             top: 10,
             right: 50,
-            left: 0,
+            left: 15,
             bottom: 0,
           }}
         >
