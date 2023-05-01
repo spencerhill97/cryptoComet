@@ -1,11 +1,9 @@
 import { useTheme } from "@mui/material/styles";
-import { AppBar, Box, Toolbar, Typography } from "@mui/material";
+import { AppBar, Toolbar, Typography } from "@mui/material";
 import SelectCurrency from "./SelectCurrency";
 import LoginBtn from "./LoginBtn";
-import { useGlobalContext } from "../../context/GobalContext";
 
 const Navbar = () => {
-  const { currency, handleCurrencyChange } = useGlobalContext();
   const theme = useTheme();
 
   const navStyles = {
@@ -34,7 +32,7 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar component="nav" sx={{ width: "100%", position: "absolute" }}>
+    <AppBar component="nav" sx={{ width: "100%", position: "static" }}>
       <Toolbar sx={navStyles}>
         <Typography variant="h5" component="h6">
           Crypto Comet
