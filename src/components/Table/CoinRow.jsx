@@ -1,4 +1,5 @@
 import { TableRow, TableCell, Stack, Typography, Box } from "@mui/material";
+import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import { useGlobalContext } from "../../context/GobalContext";
 
@@ -10,7 +11,7 @@ const CoinRow = ({
   price_change_percentage_24h,
   market_cap,
 }) => {
-  const { activeSymbol, insertComma } = useGlobalContext();
+  const { activeSymbol, insertComma, roundNumber } = useGlobalContext();
   const theme = useTheme();
 
   const tableRowStyles = {
@@ -48,7 +49,9 @@ const CoinRow = ({
       width: "25%",
     },
     "td:first-of-type": {
-      padding: "16px 16px",
+      padding: {
+        xxs: "16px 16px",
+      },
     },
   };
 
@@ -56,7 +59,9 @@ const CoinRow = ({
     <TableRow sx={tableRowStyles}>
       <TableCell>
         <Stack direction="row" spacing={1} alignItems="center">
-          <Box src={image} alt={id} component="img" />
+          <Link to={`/coin/${id}`}>
+            <Box src={image} alt={id} component="img" />
+          </Link>
           <Stack className="firstCellText">
             <Typography
               sx={{
@@ -86,7 +91,9 @@ const CoinRow = ({
         className="sharedText"
       >
         {`${activeSymbol} ${
-          current_price < 1 ? current_price : insertComma(current_price)
+          (current_price > 1 && insertComma(current_price)) ||
+          (String(current_price).length > 8 && roundNumber(current_price)) ||
+          current_price
         }`}
       </TableCell>
       <TableCell

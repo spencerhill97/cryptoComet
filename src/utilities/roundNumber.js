@@ -1,5 +1,3 @@
 export const roundNumber = (number) => {
-  const roundingRegex = /^[\d]+\.?(\d\d[0-9]?|0*[\d]{1,3})?/gi;
-  const stringNum = String(number).match(roundingRegex)[0];
-  return stringNum;
+  return String(number).length > 8 ? parseFloat(number).toFixed(7) : number;
 };

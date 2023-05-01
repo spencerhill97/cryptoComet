@@ -6,7 +6,7 @@ const LoginTabs = ({ toggleActiveTab, currentTab }) => {
 
   const tabsStyles = {
     "&.MuiTabs-root": {
-      width: "350px",
+      width: "100%",
       backgroundColor: theme.palette.purple[100],
       borderRadius: "4px 4px 0 0",
     },

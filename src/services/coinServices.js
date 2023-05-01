@@ -3,9 +3,9 @@ export const fetchCoinList = (currency) => {
 };
 
 export const fetchCoin = (id) => {
-  `https://api.coingecko.com/api/v3/coins/${id}`;
+  return `https://api.coingecko.com/api/v3/coins/${id}`;
 };
 
 export const fetchCoinHistory = (id, days, currency) => {
-  `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${currency}&days=${days}&interval=daily`;
+  return `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${currency}&days=${days}&interval=daily`;
 };

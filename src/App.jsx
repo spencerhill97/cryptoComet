@@ -1,12 +1,9 @@
-import { ThemeProvider } from "@mui/material/styles";
-import theme from "./theme";
-import { CssBaseline } from "@mui/material";
-import Loading from "./pages/Loading";
-import Navbar from "./pages/Navbar";
-import Hero from "./pages/Hero";
-import Search from "./pages/Search";
-import Table from "./pages/Table";
-import Login from "./pages/Login";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Loading from "./components/Loading";
+import Navbar from "./components/Navbar";
+import Login from "./components/Login";
+import MainPage from "./pages/MainPage";
+import CoinPage from "./pages/CoinPage";
 import { useGlobalContext } from "./context/GobalContext";
 
 const App = () => {
@@ -17,14 +14,14 @@ const App = () => {
   }
 
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <BrowserRouter>
       <Navbar />
       {loginDashboard && <Login />}
-      <Hero />
-      <Search />
-      <Table />
-    </ThemeProvider>
+      <Routes>
+        <Route path="/" element={<MainPage />} exact />
+        <Route path="/coin/:coinId" element={<CoinPage />} exact />
+      </Routes>
+    </BrowserRouter>
   );
 };
 

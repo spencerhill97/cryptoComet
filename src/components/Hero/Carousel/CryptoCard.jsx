@@ -93,9 +93,9 @@ const CryptoCard = ({
           }}
         >
           {activeSymbol}{" "}
-          {current_price > 1
-            ? insertComma(roundNumber(current_price))
-            : current_price}
+          {(current_price > 1 && insertComma(current_price)) ||
+            (String(current_price).length > 8 && roundNumber(current_price)) ||
+            current_price}
         </Typography>
       </CardContent>
     </Card>
