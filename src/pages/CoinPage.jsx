@@ -1,22 +1,32 @@
 import CoinInfo from "../components/CoinPage/CoinInfo";
 import CoinChart from "../components/CoinPage/HistoryChart";
-import { Stack } from "@mui/material";
+import { Box } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const CoinPage = () => {
   return (
-    <Stack
-      direction={"row"}
+    <Box
       sx={{
         alignItems: "center",
         width: "100%",
-        height: "100vh",
+        height: {
+          xxs: "100%",
+          md: "100vh",
+        },
+        display: "flex",
+        flexDirection: {
+          xxs: "column",
+          md: "row",
+        },
+        justifyContent: "center",
+        alignItems: "center",
         overflow: "hidden",
       }}
       component="section"
     >
       <CoinInfo />
       <CoinChart />
-    </Stack>
+    </Box>
   );
 };
 

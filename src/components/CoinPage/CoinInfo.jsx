@@ -44,9 +44,18 @@ const CoinInfo = () => {
         color: "white",
         position: "static",
         textAlign: "start",
-        width: "35%",
-        padding: "20px",
-        height: "100vh",
+        width: {
+          xxs: "100%",
+          md: "35%",
+        },
+        padding: {
+          xxs: "50px 20px 50px 20px",
+          md: "20px",
+        },
+        height: {
+          xxs: "100%",
+          md: "100vh",
+        },
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
