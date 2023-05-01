@@ -1,38 +1,51 @@
-import { useEffect } from "react";
 import { useGlobalContext } from "../../../context/GobalContext";
 import { insertComma } from "../../../utilities/insertComma";
 import { roundNumber } from "../../../utilities/roundNumber";
+import { useTheme } from "@mui/material/styles";
+import { Stack, Typography } from "@mui/material";
 
 const CustomTooltip = (props) => {
   const { activeSymbol } = useGlobalContext();
+  const theme = useTheme();
 
-  useEffect(() => {
-    console.log(activeSymbol);
-  }, []);
+  const tooltipStyles = {
+    "&.tooltip-parent": {
+      backgroundColor: "white",
+      border: "1px solid #bebebe",
+      padding: "15px",
+      display: "flex",
+      margin: "0",
+    },
+    "& .tooltip-date": {
+      color: theme.palette.custom.purpleFont,
+      fontWeight: "600",
+    },
+    "& .tooltip-value": {
+      letterSpacing: ".03rem",
+    },
+    "& .tooltip-key": {
+      color: theme.palette.purple[900],
+      fontWeight: "900",
+    },
+  };
 
   const { payload } = props;
   return (
-    <div
-      style={{
-        backgroundColor: "white",
-        border: "1px solid #bebebe",
-        padding: "0px 10px",
-      }}
-    >
+    <Stack className="tooltip-parent" sx={tooltipStyles}>
       {payload.map((entries, index) => {
         return (
-          <div key={index} style={{ margin: "0", fontSize: "14px" }}>
-            <p style={{ paddingBottom: "0", marginBottom: "0" }}>
+          <Stack key={index} spacing={0.35}>
+            <Typography variant="p" component="p" className="tooltip-date">
               {entries.payload.time}
-            </p>
-            <p style={{ paddingTop: "0", marginTop: "5px" }}>
-              Price:
-              {` ${activeSymbol} ${insertComma(roundNumber(entries.value))}`}
-            </p>
-          </div>
+            </Typography>
+            <Typography variant="p" component="p" className="tooltip-value">
+              <span className="tooltip-key">Price:</span>
+              {` ${activeSymbol}${insertComma(roundNumber(entries.value))}`}
+            </Typography>
+          </Stack>
         );
       })}
-    </div>
+    </Stack>
   );
 };
 

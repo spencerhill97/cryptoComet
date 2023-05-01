@@ -46,12 +46,12 @@ const CoinInfo = () => {
         textAlign: "start",
         width: "35%",
         padding: "20px",
-        height: "100%",
-        overflowY: "scroll",
+        height: "100vh",
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
         backgroundColor: theme.palette.purple[400],
+        borderRight: "1px solid" + theme.palette.purple[600],
       }}
       component="article"
     >
@@ -62,23 +62,28 @@ const CoinInfo = () => {
           alt={name}
         />
       </figure>
-      <Typography variant="h3" component="h2" sx={{ textAlign: "center" }}>
+      <Typography
+        variant="h3"
+        component="h2"
+        sx={{ textAlign: "center", marginBottom: "20px" }}
+      >
         {name}
       </Typography>
-      <Typography variant="subtitle2" component="p">
-        RANK: {market_cap_rank}
+      <Typography variant="h5" component="p">
+        <span className="key">rank: </span>
+        {market_cap_rank}
       </Typography>
-      <Typography variant="subtitle2" component="p">
-        CURRENT PRICE: {activeSymbol}{" "}
-        {insertComma(market_data.current_price[currency])}
+      <Typography variant="h5" component="p">
+        <span>current price: </span>
+        {activeSymbol} {insertComma(market_data.current_price[currency])}
       </Typography>
-      <Typography variant="subtitle2" component="p">
-        MARKET CAP: {activeSymbol}{" "}
-        {insertComma(market_data.market_cap[currency])}
+      <Typography variant="h5" component="p">
+        <span className="key">market cap: </span>
+        {activeSymbol} {insertComma(market_data.market_cap[currency])}
       </Typography>
-      <Typography variant="subtitle2" component="p">
-        TOTAL VOLUME: {activeSymbol}{" "}
-        {insertComma(market_data.total_volume[currency])}
+      <Typography variant="h5" component="p">
+        <span className="key">total volume: </span>
+        {activeSymbol} {insertComma(market_data.total_volume[currency])}
       </Typography>
       {description.en && (
         <Typography
@@ -90,7 +95,7 @@ const CoinInfo = () => {
             letterSpacing: ".02rem",
           }}
         >
-          {ReactHTMLParser(description.en)}
+          {ReactHTMLParser(description.en.split(".")[0] + ".")}
         </Typography>
       )}
     </Stack>

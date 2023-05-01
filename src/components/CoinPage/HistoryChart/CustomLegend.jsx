@@ -1,8 +1,10 @@
 import { useTheme } from "@mui/material/styles";
+import { useGlobalContext } from "../../../context/GobalContext";
 import SquareIcon from "@mui/icons-material/Square";
 
 const CustomLegend = (props) => {
-  useTheme();
+  const { currency } = useGlobalContext();
+  const theme = useTheme();
 
   const { payload } = props;
   return (
@@ -19,7 +21,9 @@ const CustomLegend = (props) => {
         style={{ marginRight: "10px", color: "#8884d8" }}
       />
       {payload.map((entry, index) => (
-        <span key={`item-${index}`}>{entry.value} ~ 365 days</span>
+        <span key={index}>{`${
+          entry.value
+        } in ${currency.toUpperCase()} ~ 365 days`}</span>
       ))}
     </div>
   );

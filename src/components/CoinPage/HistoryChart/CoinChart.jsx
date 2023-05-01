@@ -40,7 +40,7 @@ function CoinChart() {
   }, [currency]);
 
   return (
-    <ResponsiveContainer width="100%" height="max-content" aspect={3}>
+    <ResponsiveContainer width="100%" height="max-content" aspect={2}>
       <AreaChart
         data={history}
         margin={{ top: 10, right: 50, left: 35, bottom: 0 }}
