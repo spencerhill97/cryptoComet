@@ -5,6 +5,7 @@ import { fetchCoinHistory } from "../../../services/coinServices";
 import { useParams } from "react-router-dom";
 import CustomLegend from "./CustomLegend";
 import CustomTooltip from "./CustomTooltip";
+import CustomXTick from "./CustomXTick";
 import { getDateAndTime } from "../../../utilities/getDate";
 import { insertComma } from "../../../utilities/insertComma";
 import {
@@ -39,7 +40,6 @@ function CoinChart() {
           return { time: getDateAndTime(arr[0]), Price: arr[1] };
         });
         setHistory(data);
-        console.log(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -68,7 +68,7 @@ function CoinChart() {
             top: 10,
             right: 40,
             left: 0,
-            bottom: 0,
+            bottom: 25,
           }}
         >
           <defs>
@@ -78,11 +78,16 @@ function CoinChart() {
             </linearGradient>
           </defs>
           <Legend
-            content={CustomLegend}
+            content={<CustomLegend days={days} />}
             verticalAlign="true"
             wrapperStyle={{ top: "-30px" }}
           />
-          <XAxis dataKey="time" minTickGap={22.5} tickMargin={2.5} />
+          <XAxis
+            dataKey="time"
+            tick={<CustomXTick />}
+            minTickGap={12}
+            tickMargin={2.5}
+          />
           <YAxis tickFormatter={insertComma} />
           <Tooltip content={CustomTooltip} isAnimationActive={"false"} />
           <Area

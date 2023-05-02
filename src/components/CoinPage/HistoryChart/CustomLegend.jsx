@@ -5,7 +5,8 @@ import { Typography, Stack } from "@mui/material";
 const CustomLegend = (props) => {
   const { currency } = useGlobalContext();
 
-  const { payload } = props;
+  const { payload, days } = props;
+
   return (
     <Stack
       direction="row"
@@ -15,6 +16,8 @@ const CustomLegend = (props) => {
           md: "100%",
         },
         justifyContent: "center",
+        alignItems: "center",
+        paddingLeft: "25px",
       }}
     >
       <SquareIcon
@@ -22,9 +25,11 @@ const CustomLegend = (props) => {
         style={{ marginRight: "10px", color: "#8884d8" }}
       />
       {payload.map((entry, index) => (
-        <Typography variant="p" key={index}>{`${
+        <Typography fontFamily="Arial, sans-serif" variant="p" key={index}>{`${
           entry.value
-        } in ${currency.toUpperCase()} ~ 365 days`}</Typography>
+        } in ${currency.toUpperCase()} ~ ${days} ${
+          days === 1 ? "day" : "days"
+        }`}</Typography>
       ))}
     </Stack>
   );

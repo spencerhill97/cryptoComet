@@ -58,10 +58,13 @@ const theme = createTheme({
       fontSize: "4.5rem",
     },
     subtitle1: {
+      fontFamily: "Lato, sans-serif",
       fontSize: "1.5rem",
     },
+    p: {
+      fontFamily: "Lato, sans-serif",
+    },
   },
-  spacing: (factor) => `${1 * factor}rem`,
   breakpoints: {
     values: {
       xxs: 0,

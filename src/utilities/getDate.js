@@ -2,7 +2,8 @@ export const getDateAndTime = (milliseconds) => {
   const newDate = new Date(milliseconds);
   const AM_OR_PM = newDate.getHours() >= 12 ? "PM" : "AM";
   const hours =
-    newDate.getHours() > 12 ? newDate.getHours() - 12 : newDate.getHours();
+    (newDate.getHours() === 12 && 12) ||
+    (newDate.getHours() > 12 ? newDate.getHours() - 12 : newDate.getHours());
   const minutes =
     String(newDate.getMinutes()).length === 1
       ? String(newDate.getMinutes()) + "0"

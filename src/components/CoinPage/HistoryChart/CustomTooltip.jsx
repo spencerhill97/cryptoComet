@@ -16,14 +16,20 @@ const CustomTooltip = (props) => {
       display: "flex",
       margin: "0",
     },
-    "& .tooltip-date": {
-      color: theme.palette.custom.purpleFont,
-      fontWeight: "600",
+    "& .tooltip": {
+      fontFamily: "Latos, san-serif",
     },
-    "& .tooltip-value": {
+    "& .tooltip.date": {
+      color: theme.palette.custom.purpleFont,
+      fontFamily: "Arial, sans-serif",
+      fontWeight: "600",
+      letterSpacing: ".03rem",
+      paddingBottom: "5px",
+    },
+    "& .tooltip.value": {
       letterSpacing: ".03rem",
     },
-    "& .tooltip-key": {
+    "& .tooltip.key": {
       color: theme.palette.purple[900],
       fontWeight: "900",
     },
@@ -35,11 +41,11 @@ const CustomTooltip = (props) => {
       {payload.map((entries, index) => {
         return (
           <Stack key={index} spacing={0.35}>
-            <Typography variant="p" component="p" className="tooltip-date">
+            <Typography variant="p" component="p" className="tooltip date">
               {entries.payload.time}
             </Typography>
-            <Typography variant="p" component="p" className="tooltip-value">
-              <span className="tooltip-key">Price:</span>
+            <Typography variant="p" component="p" className="tooltip value">
+              <span className="tooltip key">Price:</span>
               {` ${activeSymbol}${insertComma(roundNumber(entries.value))}`}
             </Typography>
           </Stack>

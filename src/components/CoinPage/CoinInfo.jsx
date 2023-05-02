@@ -8,6 +8,7 @@ import Loading from "../Loading";
 import { useTheme } from "@mui/material/styles";
 import { insertComma } from "../../utilities/insertComma";
 import ReactHTMLParser from "react-html-parser";
+import { coinInfoKeys } from "../../data/coinInfoKeys";
 
 const CoinInfo = () => {
   const { currency, activeSymbol } = useGlobalContext();
@@ -30,7 +31,7 @@ const CoinInfo = () => {
     };
 
     fetchData();
-  }, [currency]);
+  }, [currency, coin]);
 
   if (loading) {
     return <Loading />;
@@ -39,7 +40,7 @@ const CoinInfo = () => {
   const { name, market_cap_rank, market_data, image, description } = coin;
   return (
     <Stack
-      spacing={0.5}
+      spacing={1.25}
       sx={{
         color: "white",
         position: "static",
@@ -50,7 +51,7 @@ const CoinInfo = () => {
         },
         padding: {
           xxs: "50px 20px 50px 20px",
-          md: "20px",
+          md: "30px",
         },
         height: {
           xxs: "100%",
@@ -74,27 +75,119 @@ const CoinInfo = () => {
       <Typography
         variant="h3"
         component="h2"
-        sx={{ textAlign: "center", marginBottom: "20px" }}
+        sx={{ textAlign: "center", paddingBottom: "20px" }}
       >
         {name}
       </Typography>
-      <Typography variant="h5" component="p">
-        <span className="key">rank: </span>
+      <Typography variant="h5" sx={{ letterSpacing: "0.03rem" }} component="p">
+        <span
+          style={{
+            fontWeight: "900",
+            textTransform: "capitalize",
+            letterSpacing: "0",
+          }}
+        >
+          rank:{"  "}
+        </span>
         {market_cap_rank}
       </Typography>
-      <Typography variant="h5" component="p">
-        <span>current price: </span>
-        {activeSymbol} {insertComma(market_data.current_price[currency])}
+      <Typography variant="h5" sx={{ letterSpacing: "0.03rem" }} component="p">
+        <span
+          style={{
+            fontWeight: "900",
+            textTransform: "capitalize",
+            letterSpacing: "0",
+          }}
+        >
+          current price:{"  "}
+        </span>
+        {activeSymbol}
+        {insertComma(market_data.current_price[currency])}
       </Typography>
-      <Typography variant="h5" component="p">
-        <span className="key">market cap: </span>
-        {activeSymbol} {insertComma(market_data.market_cap[currency])}
+      <Typography variant="h5" sx={{ letterSpacing: "0.03rem" }} component="p">
+        <span
+          style={{
+            fontWeight: "900",
+            textTransform: "capitalize",
+            letterSpacing: "0",
+          }}
+        >
+          price change 24h:{"  "}
+        </span>
+        {insertComma(
+          market_data.price_change_percentage_24h_in_currency[currency]
+        )}
+        %
       </Typography>
-      <Typography variant="h5" component="p">
-        <span className="key">total volume: </span>
-        {activeSymbol} {insertComma(market_data.total_volume[currency])}
+      <Typography variant="h5" sx={{ letterSpacing: "0.03rem" }} component="p">
+        <span
+          style={{
+            fontWeight: "900",
+            textTransform: "capitalize",
+            letterSpacing: "0",
+          }}
+        >
+          price change 7d:{"  "}
+        </span>
+        {insertComma(
+          market_data.price_change_percentage_7d_in_currency[currency]
+        )}
+        %
       </Typography>
-      {description.en && (
+      <Typography variant="h5" sx={{ letterSpacing: "0.03rem" }} component="p">
+        <span
+          style={{
+            fontWeight: "900",
+            textTransform: "capitalize",
+            letterSpacing: "0",
+          }}
+        >
+          price change 30d:{"  "}
+        </span>
+        {insertComma(
+          market_data.price_change_percentage_30d_in_currency[currency]
+        )}
+        %
+      </Typography>
+      <Typography variant="h5" sx={{ letterSpacing: "0.03rem" }} component="p">
+        <span
+          style={{
+            fontWeight: "900",
+            textTransform: "capitalize",
+            letterSpacing: "0",
+          }}
+        >
+          market cap:{"  "}
+        </span>
+        {activeSymbol}
+        {insertComma(market_data.market_cap[currency])}
+      </Typography>
+      <Typography variant="h5" sx={{ letterSpacing: "0.03rem" }} component="p">
+        <span
+          style={{
+            fontWeight: "900",
+            textTransform: "capitalize",
+            letterSpacing: "0",
+          }}
+        >
+          total volume:{"  "}
+        </span>
+        {activeSymbol}
+        {insertComma(market_data.total_volume[currency])}
+      </Typography>
+      <Typography variant="h5" sx={{ letterSpacing: "0.03rem" }} component="p">
+        <span
+          style={{
+            fontWeight: "900",
+            textTransform: "capitalize",
+            letterSpacing: "0",
+          }}
+        >
+          total supply:{"  "}
+        </span>
+        {insertComma(market_data.total_supply)}
+      </Typography>
+      {/* {description.en && (
         <Typography
           variant="p"
           component="p"
@@ -106,7 +199,7 @@ const CoinInfo = () => {
         >
           {ReactHTMLParser(description.en.split(".")[0] + ".")}
         </Typography>
-      )}
+      )} */}
     </Stack>
   );
 };

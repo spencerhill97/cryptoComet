@@ -1,7 +1,6 @@
 import CoinInfo from "../components/CoinPage/CoinInfo";
 import CoinChart from "../components/CoinPage/HistoryChart";
 import { Box } from "@mui/material";
-import useMediaQuery from "@mui/material/useMediaQuery";
 
 const CoinPage = () => {
   return (
