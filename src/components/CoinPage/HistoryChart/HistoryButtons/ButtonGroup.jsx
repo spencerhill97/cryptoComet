@@ -1,21 +1,36 @@
 import { ButtonGroup, Button } from "@mui/material";
+import { numberOfDays } from "../../../../data/numberOfDays";
 
-const HistoryButtonGroup = () => {
+const HistoryButtonGroup = ({ changeDays }) => {
   const buttonGroupStyles = {
     "&.MuiButtonGroup-root": {
-      width: "75%",
+      width: {
+        xxs: "90%",
+        md: "75%",
+      },
     },
     "& .MuiButtonBase-root": {
-      width: "25%",
+      width: {
+        xxs: "25%",
+        md: "20%",
+      },
     },
   };
 
   return (
     <ButtonGroup sx={buttonGroupStyles} variant="contained">
-      <Button width="25%">7 days</Button>
-      <Button width="25%">30 days</Button>
-      <Button width="25%">90 days</Button>
-      <Button width="25%">365 days</Button>
+      {numberOfDays.map((dayBtn) => {
+        const { id, text, days } = dayBtn;
+        return (
+          <Button
+            type="button"
+            key={id}
+            onClick={() => changeDays(Number(days))}
+          >
+            {text}
+          </Button>
+        );
+      })}
     </ButtonGroup>
   );
 };

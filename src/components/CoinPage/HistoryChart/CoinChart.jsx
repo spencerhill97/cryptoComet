@@ -5,7 +5,7 @@ import { fetchCoinHistory } from "../../../services/coinServices";
 import { useParams } from "react-router-dom";
 import CustomLegend from "./CustomLegend";
 import CustomTooltip from "./CustomTooltip";
-import { getDate } from "../../../utilities/getDate";
+import { getDateAndTime } from "../../../utilities/getDate";
 import { insertComma } from "../../../utilities/insertComma";
 import {
   AreaChart,
@@ -21,25 +21,31 @@ import HistoryButtonGroup from "./HistoryButtons/ButtonGroup";
 
 function CoinChart() {
   const { coinId } = useParams();
-  const { currency, activeSymbol } = useGlobalContext();
+  const { currency } = useGlobalContext();
+  const [days, setDays] = useState(7);
   const [history, setHistory] = useState("");
+
+  const changeDays = (day) => {
+    setDays(day);
+  };
 
   useEffect(() => {
     const fetchHistory = async () => {
       try {
         const response = await axios.get(
-          fetchCoinHistory(coinId, 90, currency)
+          fetchCoinHistory(coinId, days, currency)
         );
         const data = response.data.prices.map((arr) => {
-          return { time: getDate(arr[0]), Price: arr[1] };
+          return { time: getDateAndTime(arr[0]), Price: arr[1] };
         });
         setHistory(data);
+        console.log(response.data);
       } catch (error) {
         console.log(error);
       }
     };
     fetchHistory();
-  }, [currency]);
+  }, [currency, days]);
 
   return (
     <Stack
@@ -55,13 +61,13 @@ function CoinChart() {
       spacing={2}
       component="article"
     >
-      <ResponsiveContainer width="100%" height="max-content" aspect={2}>
+      <ResponsiveContainer width="95%" height="max-content" aspect={2}>
         <AreaChart
           data={history}
           margin={{
             top: 10,
-            right: 50,
-            left: 15,
+            right: 40,
+            left: 0,
             bottom: 0,
           }}
         >
@@ -89,7 +95,7 @@ function CoinChart() {
           />
         </AreaChart>
       </ResponsiveContainer>
-      <HistoryButtonGroup />
+      <HistoryButtonGroup changeDays={changeDays} />
     </Stack>
   );
 }

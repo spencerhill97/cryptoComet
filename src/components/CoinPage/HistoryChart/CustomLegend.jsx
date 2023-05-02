@@ -11,7 +11,7 @@ const CustomLegend = (props) => {
       direction="row"
       sx={{
         width: {
-          xxs: "100vw",
+          xxs: "90vw",
           md: "100%",
         },
         justifyContent: "center",

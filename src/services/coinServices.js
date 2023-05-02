@@ -7,5 +7,5 @@ export const fetchCoin = (id) => {
 };
 
 export const fetchCoinHistory = (id, days, currency) => {
-  return `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${currency}&days=${days}&interval=daily`;
+  return `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=${currency}&days=${days}`;
 };

@@ -7,7 +7,6 @@ const CoinPage = () => {
   return (
     <Box
       sx={{
-        alignItems: "center",
         width: "100%",
         height: {
           xxs: "100%",
