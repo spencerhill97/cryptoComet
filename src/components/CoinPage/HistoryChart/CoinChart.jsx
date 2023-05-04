@@ -50,13 +50,12 @@ function CoinChart() {
   return (
     <Stack
       sx={{
-        height: {
-          xxs: "60vh",
-          md: "100%",
-        },
+        height: "100%",
         width: "100%",
         justifyContent: "center",
         alignItems: "center",
+        marginTop: "75px",
+        marginBottom: "80px",
       }}
       spacing={2}
       component="article"
