@@ -6,12 +6,12 @@ import { Stack, Typography } from "@mui/material";
 import { useGlobalContext } from "../../../context/GobalContext";
 import Loading from "../../Loading";
 import { useTheme } from "@mui/material/styles";
-import ReactHTMLParser from "react-html-parser";
 import LinkContainer from "./LinkContainer";
 import CoinStats from "./CoinStats";
+import CoinDescription from "./CoinDescription";
 
 const CoinInfo = () => {
-  const { currency, activeSymbol } = useGlobalContext();
+  const { currency } = useGlobalContext();
   const { coinId } = useParams();
   const [coin, setCoin] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -37,17 +37,10 @@ const CoinInfo = () => {
     return <Loading />;
   }
 
-  const {
-    name,
-    market_cap_rank,
-    market_data,
-    image,
-    description,
-    genesis_date,
-  } = coin;
+  const { name, image } = coin;
   return (
     <Stack
-      spacing={1.25}
+      spacing={1}
       sx={{
         color: "white",
         position: "static",
@@ -72,7 +65,7 @@ const CoinInfo = () => {
       }}
       component="article"
     >
-      <figure style={{ width: "200px", margin: "0 auto 20px auto" }}>
+      <figure style={{ width: "200px", margin: "0 auto 0 auto" }}>
         <img
           style={{ objectFit: "contain", width: "100%" }}
           src={image.large}
@@ -80,25 +73,18 @@ const CoinInfo = () => {
         />
       </figure>
       {name && (
-        <Typography variant="h3" component="h2" sx={{ textAlign: "center" }}>
+        <Typography
+          variant="h3"
+          component="h2"
+          fontFamily="Rubik, sans-serif"
+          sx={{ textAlign: "center" }}
+        >
           {name}
         </Typography>
       )}
       <LinkContainer coin={coin} />
       <CoinStats coin={coin} />
-      {description.en && (
-        <Typography
-          variant="p"
-          component="p"
-          style={{
-            textAlign: "justify",
-            lineHeight: "1.25rem",
-            letterSpacing: ".02rem",
-          }}
-        >
-          {ReactHTMLParser(description.en.split(".")[0])}
-        </Typography>
-      )}
+      <CoinDescription coin={coin} />
     </Stack>
   );
 };

@@ -13,7 +13,7 @@ const LoginBtn = () => {
     marginRight: "10px",
     "&:hover": {
       backgroundColor: theme.palette.purple["A100"],
-      border: `1px solid ${theme.palette.purple["A200"]}`,
+      border: `1px solid ${theme.palette.purple[50]}`,
       color: theme.palette.custom.white,
     },
   };

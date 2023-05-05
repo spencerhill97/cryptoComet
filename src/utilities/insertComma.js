@@ -1,3 +1,3 @@
 export const insertComma = (number) => {
-  return Number(number).toLocaleString();
+  return (number > 1 && Number(number).toLocaleString()) || number;
 };

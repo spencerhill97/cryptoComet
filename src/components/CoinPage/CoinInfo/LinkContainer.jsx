@@ -11,14 +11,34 @@ const LinkContainer = ({ coin }) => {
     a: {
       color: "white",
       transition: "all 500ms",
-      margin: "15px 0",
+      margin: "5px 0",
       cursor: "pointer",
     },
     svg: {
       fontSize: "3rem",
+      filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
     },
     "a:hover": {
-      animation: "shake",
+      animation: "shake 0.82s cubic-bezier(.36,.07,.19,.97) both",
+      transform: "translate3d(0, 0, 0)",
+      perspective: "1000px",
+    },
+    "@keyframes shake": {
+      "10%, 90%": {
+        transform: "translate3d(-1px, 0, 0)",
+      },
+      "20%, 80%": {
+        transform: "translate3d(2px, 0, 0)",
+      },
+      "30%, 50%, 70%": {
+        transform: "translate3d(-2px, 0, 0)",
+      },
+      "40%, 60%": {
+        transform: "translate3d(2px, 0, 0)",
+      },
+    },
+    "a:active": {
+      transform: "translateY(4px)",
     },
   };
 
@@ -26,10 +46,10 @@ const LinkContainer = ({ coin }) => {
     <Stack
       direction="row"
       margin="0 auto"
-      padding="15px au"
+      padding="5px auto"
       alignItems="center"
       justifyContent="center"
-      spacing={3}
+      spacing={3.5}
       sx={linkStyles}
       className="linkContainer"
     >
