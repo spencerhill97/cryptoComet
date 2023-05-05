@@ -6,11 +6,9 @@ const CoinPage = () => {
   return (
     <Box
       sx={{
+        position: "relative",
         width: "100%",
-        height: {
-          xxs: "100%",
-          md: "100vh",
-        },
+        height: "100%",
         display: "flex",
         flexDirection: {
           xxs: "column",
@@ -18,7 +16,6 @@ const CoinPage = () => {
         },
         justifyContent: "center",
         alignItems: "center",
-        overflow: "hidden",
       }}
       component="section"
     >

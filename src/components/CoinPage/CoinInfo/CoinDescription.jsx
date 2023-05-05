@@ -10,7 +10,7 @@ const CoinDescription = ({ coin }) => {
   const descriptionStyles = {
     "&.description-container": {
       maxHeight: {
-        md: "200px",
+        md: "250px",
       },
     },
     a: {

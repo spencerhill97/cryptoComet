@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { fetchCoin } from "../../../services/coinServices";
 import axios from "axios";
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography, Box } from "@mui/material";
 import { useGlobalContext } from "../../../context/GobalContext";
 import Loading from "../../Loading";
 import { useTheme } from "@mui/material/styles";
@@ -42,8 +42,8 @@ const CoinInfo = () => {
     <Stack
       spacing={1}
       sx={{
+        position: "relative",
         color: "white",
-        position: "static",
         textAlign: "start",
         width: {
           xxs: "100%",
@@ -53,9 +53,12 @@ const CoinInfo = () => {
           xxs: "50px 20px 50px 20px",
           md: "30px",
         },
-        height: {
-          xxs: "100%",
-          md: "100vh",
+        maxHeight: "100vh",
+        overflowY: "scroll",
+        msOverflowStyle: "none",
+        scrollbarWidth: "none",
+        "&::-webkit-scrollbar": {
+          display: "none",
         },
         display: "flex",
         flexDirection: "column",
@@ -65,13 +68,13 @@ const CoinInfo = () => {
       }}
       component="article"
     >
-      <figure style={{ width: "200px", margin: "0 auto 0 auto" }}>
+      <Box sx={{ width: "200px", height: "200px", margin: "0 auto 0 auto" }}>
         <img
           style={{ objectFit: "contain", width: "100%" }}
           src={image.large}
           alt={name}
         />
-      </figure>
+      </Box>
       {name && (
         <Typography
           variant="h3"

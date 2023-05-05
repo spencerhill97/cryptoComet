@@ -8,7 +8,7 @@ const Navbar = () => {
 
   const navStyles = {
     "&.MuiPaper-root": {
-      position: "static",
+      position: "relative",
     },
     "&.MuiToolbar-root": {
       padding: "0",

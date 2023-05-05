@@ -49,7 +49,7 @@ const LinkContainer = ({ coin }) => {
       padding="5px auto"
       alignItems="center"
       justifyContent="center"
-      spacing={3.5}
+      spacing={2.5}
       sx={linkStyles}
       className="linkContainer"
     >
