@@ -50,7 +50,10 @@ function CoinChart() {
   return (
     <Stack
       sx={{
-        height: "100%",
+        height: {
+          xxs: "100%",
+          md: "100vh",
+        },
         width: "100%",
         justifyContent: "center",
         alignItems: "center",

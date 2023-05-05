@@ -40,9 +40,7 @@ const CoinInfo = () => {
   const { name, image } = coin;
   return (
     <Stack
-      spacing={1}
       sx={{
-        position: "relative",
         color: "white",
         textAlign: "start",
         width: {
@@ -53,41 +51,43 @@ const CoinInfo = () => {
           xxs: "50px 20px 50px 20px",
           md: "30px",
         },
-        maxHeight: "100vh",
-        overflowY: "scroll",
-        msOverflowStyle: "none",
-        scrollbarWidth: "none",
-        "&::-webkit-scrollbar": {
-          display: "none",
+        height: {
+          // xxs: "100%",
+          md: "100vh",
         },
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
+        overflowY: { md: "scroll" },
+        msOverflowStyle: { md: "none" },
+        scrollbarWidth: { md: "none" },
+        "&::-webkit-scrollbar": {
+          display: { md: "none" },
+        },
         backgroundColor: theme.palette.purple[400],
         borderRight: "1px solid" + theme.palette.purple[600],
       }}
       component="article"
     >
-      <Box sx={{ width: "200px", height: "200px", margin: "0 auto 0 auto" }}>
-        <img
-          style={{ objectFit: "contain", width: "100%" }}
-          src={image.large}
-          alt={name}
-        />
-      </Box>
-      {name && (
-        <Typography
-          variant="h3"
-          component="h2"
-          fontFamily="Rubik, sans-serif"
-          sx={{ textAlign: "center" }}
-        >
-          {name}
-        </Typography>
-      )}
-      <LinkContainer coin={coin} />
-      <CoinStats coin={coin} />
-      <CoinDescription coin={coin} />
+      <Stack spacing={1} height="100%">
+        <Box sx={{ width: "200px", height: "200px", margin: "0 auto 0 auto" }}>
+          <img
+            style={{ objectFit: "contain", width: "100%" }}
+            src={image.large}
+            alt={name}
+          />
+        </Box>
+        {name && (
+          <Typography
+            variant="h3"
+            component="h2"
+            fontFamily="Rubik, sans-serif"
+            sx={{ textAlign: "center" }}
+          >
+            {name}
+          </Typography>
+        )}
+        <LinkContainer coin={coin} />
+        <CoinStats coin={coin} />
+        <CoinDescription coin={coin} />
+      </Stack>
     </Stack>
   );
 };

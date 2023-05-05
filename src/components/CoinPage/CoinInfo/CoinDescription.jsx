@@ -1,20 +1,31 @@
 import { useState } from "react";
 import { Typography, Stack, Button } from "@mui/material";
 import ReactHTMLParser from "react-html-parser";
+import { useTheme } from "@mui/material/styles";
 
 const CoinDescription = ({ coin }) => {
   const [readMore, setReadMore] = useState(true);
+  const theme = useTheme();
 
   const { description } = coin;
 
   const descriptionStyles = {
-    "&.description-container": {
-      maxHeight: {
-        md: "250px",
-      },
-    },
     a: {
       color: "white",
+    },
+    "& .MuiButtonBase-root": {
+      backgroundColor: theme.palette.purple[700],
+      border: `1px solid ${theme.palette.purple[500]}`,
+      color: theme.palette.custom.white,
+      marginTop: "20px",
+      marginBottom: {
+        md: "30px",
+      },
+      "&.hover": {
+        backgroundColor: theme.palette.purple[500],
+        border: `1px solid ${theme.palette.purple[400]}`,
+        color: theme.palette.custom.white,
+      },
     },
   };
   return (
@@ -52,9 +63,11 @@ const CoinDescription = ({ coin }) => {
             : ReactHTMLParser(description.en)}
         </Typography>
       )}
-      <Button type="button" onClick={() => setReadMore(!readMore)}>
-        {readMore ? "Read More" : "Read Less"}
-      </Button>
+      {description.en && (
+        <Button type="button" onClick={() => setReadMore(!readMore)}>
+          {readMore ? "Read More" : "Read Less"}
+        </Button>
+      )}
     </Stack>
   );
 };
