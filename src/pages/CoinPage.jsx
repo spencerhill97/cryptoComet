@@ -1,4 +1,4 @@
-import CoinInfo from "../components/CoinPage/CoinInfo";
+import CoinInfo from "../components/CoinPage/CoinInfo/CoinInfo";
 import CoinChart from "../components/CoinPage/HistoryChart";
 import { Box } from "@mui/material";
 

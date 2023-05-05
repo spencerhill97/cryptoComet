@@ -1,6 +1,3 @@
-import { useEffect } from "react";
-import { Stack, Typography } from "@mui/material";
-
 const CustomXTick = (props) => {
   const { index, x, y, payload } = props;
 

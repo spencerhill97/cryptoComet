@@ -6,8 +6,8 @@ import { useParams } from "react-router-dom";
 import CustomLegend from "./CustomLegend";
 import CustomTooltip from "./CustomTooltip";
 import CustomXTick from "./CustomXTick";
+import CustomYTick from "./CustomYTick";
 import { getDateAndTime } from "../../../utilities/getDate";
-import { insertComma } from "../../../utilities/insertComma";
 import {
   AreaChart,
   XAxis,
@@ -65,7 +65,7 @@ function CoinChart() {
           data={history}
           margin={{
             top: 10,
-            right: 40,
+            right: 20,
             left: 0,
             bottom: 25,
           }}
@@ -87,7 +87,7 @@ function CoinChart() {
             minTickGap={12}
             tickMargin={2.5}
           />
-          <YAxis tickFormatter={insertComma} />
+          <YAxis tick={<CustomYTick />} />
           <Tooltip content={CustomTooltip} isAnimationActive={"false"} />
           <Area
             type="monotone"
