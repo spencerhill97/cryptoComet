@@ -11,11 +11,11 @@ const LinkContainer = ({ coin }) => {
     a: {
       color: "white",
       transition: "all 500ms",
-      margin: "5px 0",
+      margin: "10px 0",
       cursor: "pointer",
     },
     svg: {
-      fontSize: "3rem",
+      fontSize: "2.5rem",
       filter: "drop-shadow(3px 5px 2px rgb(0 0 0 / 0.4))",
     },
     "a:hover": {
@@ -49,6 +49,7 @@ const LinkContainer = ({ coin }) => {
       padding="5px auto"
       alignItems="center"
       justifyContent="center"
+      maxWidth="100%"
       spacing={2.5}
       sx={linkStyles}
       className="linkContainer"

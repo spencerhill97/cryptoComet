@@ -2,6 +2,7 @@ import { TableRow, TableCell, Stack, Typography, Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useTheme } from "@mui/material/styles";
 import { useGlobalContext } from "../../context/GobalContext";
+import { roundNumberTo3 } from "../../utilities/roundNumber";
 
 const CoinRow = ({
   id,
@@ -9,6 +10,8 @@ const CoinRow = ({
   image,
   current_price,
   price_change_percentage_24h,
+  price_change_percentage_7d_in_currency,
+  price_change_percentage_30d_in_currency,
   market_cap,
 }) => {
   const { activeSymbol, insertComma, roundNumber } = useGlobalContext();
@@ -20,7 +23,6 @@ const CoinRow = ({
       fontSize: {
         xxs: "14px",
         xs: "16px",
-        sm: "18px",
       },
       textAlign: "center",
     },
@@ -29,24 +31,16 @@ const CoinRow = ({
       fontSize: {
         xxs: "14px",
         xs: "16px",
-        sm: "18px",
       },
     },
     img: {
-      height: {
-        xxs: "50px",
-        sm: "65px",
-      },
-      width: {
-        xxs: "50px",
-        md: "65px",
-      },
+      height: "50px",
+      width: "50px",
       objectFit: "cover",
     },
     td: {
       whiteSpace: "nowrap",
       padding: "16px 20px 16px 16px",
-      width: "25%",
     },
     "td:first-of-type": {
       padding: {
@@ -106,7 +100,37 @@ const CoinRow = ({
         }}
         className="sharedText"
       >
-        {price_change_percentage_24h}%
+        {roundNumberTo3(price_change_percentage_24h)}%
+      </TableCell>
+      <TableCell
+        sx={{
+          display: { xxs: "none", md: "table-cell" },
+          color:
+            (price_change_percentage_7d_in_currency === 0 &&
+              theme.palette.custom.black) ||
+            (price_change_percentage_7d_in_currency < 0 &&
+              theme.palette.custom.negative) ||
+            (price_change_percentage_7d_in_currency > 0 &&
+              theme.palette.custom.positive),
+        }}
+        className="sharedText"
+      >
+        {roundNumberTo3(price_change_percentage_7d_in_currency)}%
+      </TableCell>
+      <TableCell
+        sx={{
+          display: { xxs: "none", md: "table-cell" },
+          color:
+            (price_change_percentage_30d_in_currency === 0 &&
+              theme.palette.custom.black) ||
+            (price_change_percentage_30d_in_currency < 0 &&
+              theme.palette.custom.negative) ||
+            (price_change_percentage_30d_in_currency > 0 &&
+              theme.palette.custom.positive),
+        }}
+        className="sharedText"
+      >
+        {roundNumberTo3(price_change_percentage_30d_in_currency)}%
       </TableCell>
       <TableCell
         sx={{ color: theme.palette.custom.grayFont }}

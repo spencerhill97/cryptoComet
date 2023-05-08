@@ -29,7 +29,12 @@ const CoinDescription = ({ coin }) => {
     },
   };
   return (
-    <Stack className="description-container" sx={descriptionStyles} spacing={1}>
+    <Stack
+      className="description-container"
+      sx={descriptionStyles}
+      paddingTop="10px"
+      spacing={1}
+    >
       {description.en && (
         <Typography
           variant="h6"
@@ -48,8 +53,8 @@ const CoinDescription = ({ coin }) => {
           variant="p"
           sx={{
             textAlign: "justify",
-            lineHeight: "1.25rem",
-            letterSpacing: ".02rem",
+            lineHeight: "1.5rem",
+            letterSpacing: ".03rem",
             overflowY: "scroll",
             msOverflowStyle: "none",
             scrollbarWidth: "none",

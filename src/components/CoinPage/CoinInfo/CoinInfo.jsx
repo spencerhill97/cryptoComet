@@ -41,18 +41,19 @@ const CoinInfo = () => {
   return (
     <Stack
       sx={{
+        position: "relative",
         color: "white",
         textAlign: "start",
         width: {
           xxs: "100%",
           md: "35%",
         },
+        justifyContent: "center",
         padding: {
           xxs: "50px 20px 50px 20px",
           md: "30px",
         },
         height: {
-          // xxs: "100%",
           md: "100vh",
         },
         overflowY: { md: "scroll" },
@@ -66,7 +67,13 @@ const CoinInfo = () => {
       }}
       component="article"
     >
-      <Stack spacing={1} height="100%">
+      <Stack
+        sx={{
+          maxHeight: "100%",
+          width: { xxs: "100%", sm: "400px", md: "100%" },
+          margin: "0 auto",
+        }}
+      >
         <Box sx={{ width: "200px", height: "200px", margin: "0 auto 0 auto" }}>
           <img
             style={{ objectFit: "contain", width: "100%" }}
@@ -79,7 +86,7 @@ const CoinInfo = () => {
             variant="h3"
             component="h2"
             fontFamily="Rubik, sans-serif"
-            sx={{ textAlign: "center" }}
+            sx={{ textAlign: "center", marginTop: "10px" }}
           >
             {name}
           </Typography>

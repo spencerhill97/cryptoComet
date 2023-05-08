@@ -2,13 +2,14 @@ import { useTheme } from "@mui/material/styles";
 import { AppBar, Toolbar, Typography } from "@mui/material";
 import SelectCurrency from "./SelectCurrency";
 import LoginBtn from "./LoginBtn";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const theme = useTheme();
 
   const navStyles = {
     "&.MuiPaper-root": {
-      position: "relative",
+      position: "static",
     },
     "&.MuiToolbar-root": {
       padding: "0",
@@ -32,10 +33,20 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar component="nav" sx={{ width: "100%", position: "static" }}>
+    <AppBar component="nav" sx={{ width: "100%", position: "relative" }}>
       <Toolbar sx={navStyles}>
-        <Typography variant="h5" component="h6">
-          Crypto Comet
+        <Typography variant="h5" component="span">
+          <Link
+            style={{
+              color: "white",
+              textDecoration: "none",
+              fontFamily: "Rubik, sans-serif",
+              cursor: "pointer",
+            }}
+            to={"/"}
+          >
+            Crypto Comet
+          </Link>
         </Typography>
         <SelectCurrency />
         <LoginBtn />

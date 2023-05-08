@@ -85,6 +85,13 @@ const CoinTable = () => {
               <TableCell>Coin</TableCell>
               <TableCell>Price</TableCell>
               <TableCell>24h Change</TableCell>
+
+              <TableCell sx={{ display: { xxs: "none", md: "table-cell" } }}>
+                7d Change
+              </TableCell>
+              <TableCell sx={{ display: { xxs: "none", md: "table-cell" } }}>
+                30d Change
+              </TableCell>
               <TableCell>Market Cap</TableCell>
             </TableRow>
           </TableHead>
@@ -98,6 +105,7 @@ const CoinTable = () => {
       <CoinsPagination
         handleChange={handleChange}
         numberOfPages={numberOfPages}
+        page={page}
       />
     </Container>
   );
