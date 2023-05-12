@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Typography, Stack, Button } from "@mui/material";
 import ReactHTMLParser from "react-html-parser";
 import { useTheme } from "@mui/material/styles";
@@ -6,6 +6,10 @@ import { useTheme } from "@mui/material/styles";
 const CoinDescription = ({ coin }) => {
   const [readMore, setReadMore] = useState(true);
   const theme = useTheme();
+
+  useEffect(() => {
+    console.log(coin.description.en);
+  }, []);
 
   const { description } = coin;
 

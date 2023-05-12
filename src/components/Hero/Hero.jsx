@@ -3,7 +3,6 @@ import { useTheme } from "@mui/material/styles";
 import Caption from "./Caption";
 import Title from "./Title";
 import Carousel from "./Carousel/";
-import { useGlobalContext } from "../../context/GobalContext";
 
 const Hero = () => {
   const theme = useTheme();
@@ -13,9 +12,10 @@ const Hero = () => {
       justifyContent: "center",
       alignItems: "center",
       minHeight: "100%",
-      paddingTop: "7.5rem",
-      paddingBottom: "25px",
+      paddingTop: "4.5rem",
+      paddingBottom: "4.5rem",
       backgroundColor: theme.palette.purple[50],
+      width: "100%",
     },
   };
 

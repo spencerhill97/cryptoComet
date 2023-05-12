@@ -10,6 +10,7 @@ const Navbar = () => {
   const navStyles = {
     "&.MuiPaper-root": {
       position: "static",
+      width: "100%",
     },
     "&.MuiToolbar-root": {
       padding: "0",
@@ -33,8 +34,8 @@ const Navbar = () => {
   };
 
   return (
-    <AppBar component="nav" sx={{ width: "100%", position: "relative" }}>
-      <Toolbar sx={navStyles}>
+    <AppBar component="nav" sx={{ width: "100%", position: "static" }}>
+      <Toolbar sx={navStyles} width="100%">
         <Typography variant="h5" component="span">
           <Link
             style={{

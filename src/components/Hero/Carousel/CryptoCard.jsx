@@ -1,6 +1,7 @@
 import { useTheme } from "@mui/material/styles";
 import { Card, CardMedia, CardContent, Typography, Stack } from "@mui/material";
 import { useGlobalContext } from "../../../context/GobalContext";
+import { Link } from "react-router-dom";
 
 const CryptoCard = ({
   id,
@@ -34,15 +35,17 @@ const CryptoCard = ({
 
   return (
     <Card key={id} elevation={4} sx={cardStyles}>
-      <CardMedia
-        sx={{
-          width: "50px",
-          height: "50px",
-          cursor: "pointer",
-        }}
-        image={image}
-        title={id}
-      />
+      <Link to={`/coin/${id}`}>
+        <CardMedia
+          sx={{
+            width: "50px",
+            height: "50px",
+            cursor: "pointer",
+          }}
+          image={image}
+          title={id}
+        />
+      </Link>
       <CardContent>
         <Stack
           direction="row"

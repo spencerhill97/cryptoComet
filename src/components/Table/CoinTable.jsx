@@ -105,7 +105,6 @@ const CoinTable = () => {
       <CoinsPagination
         handleChange={handleChange}
         numberOfPages={numberOfPages}
-        page={page}
       />
     </Container>
   );

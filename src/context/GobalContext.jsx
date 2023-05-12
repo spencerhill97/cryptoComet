@@ -15,7 +15,7 @@ const AppContext = ({ children }) => {
   const [currency, setCurrency] = useState("usd");
   const [activeSymbol, setActiveSymbol] = useState("$");
   const [loginDashboard, toggleLoginDashboard] = useState(false);
-  const searchBarReference = useRef(null);
+  const searchBarReference = useRef();
 
   const handleCurrencyChange = (event) => {
     setCurrency(event.target.value);
@@ -62,6 +62,7 @@ const AppContext = ({ children }) => {
     insertComma,
     roundNumber,
     navigateToSearchBar,
+    searchBarReference,
   };
 
   return (

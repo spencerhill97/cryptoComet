@@ -8,8 +8,8 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route index element={<MainPage />} exact />
-          <Route path="coin/:coinId" element={<CoinPage />} exact />
+          <Route index element={<MainPage />} />
+          <Route path="coin/:coinId" element={<CoinPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

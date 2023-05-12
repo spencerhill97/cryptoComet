@@ -3,7 +3,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { useGlobalContext } from "../../../context/GobalContext";
 
-const CoinsPagination = ({ handleChange, numberOfPages, page }) => {
+const CoinsPagination = ({ handleChange, numberOfPages }) => {
   const { navigateToSearchBar } = useGlobalContext();
   const XXS = useMediaQuery("(max-width: 330px)");
   const SM = useMediaQuery("(min-width: 330px)");
@@ -27,7 +27,7 @@ const CoinsPagination = ({ handleChange, numberOfPages, page }) => {
     >
       <Pagination
         variant="outlined"
-        defaultPage={page}
+        defaultPage={1}
         size={(XXS && "medium") || (SM && "large")}
         onChange={handleChange}
         count={numberOfPages}

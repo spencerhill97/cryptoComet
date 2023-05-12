@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { Container, Box } from "@mui/material";
+import { Container } from "@mui/material";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import { useTheme } from "@mui/material/styles";
@@ -8,12 +8,12 @@ import { useGlobalContext } from "../../context/GobalContext";
 
 const Login = () => {
   const { toggleLoginDashboard, loginDashboard } = useGlobalContext();
-  const theme = useTheme();
-
-  const [showPassword, setShowPassword] = useState(false);
   const [currentTab, setCurrentTab] = useState("one");
   const ref = useRef(null);
 
+  const theme = useTheme();
+
+  const [showPassword, setShowPassword] = useState(false);
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
@@ -97,7 +97,12 @@ const Login = () => {
           handleMouseDownPassword={handleMouseDownPassword}
           currentTab={currentTab}
         />
-        <SignUp currentTab={currentTab} />
+        <SignUp
+          showPassword={showPassword}
+          handleClickShowPassword={handleClickShowPassword}
+          handleMouseDownPassword={handleMouseDownPassword}
+          currentTab={currentTab}
+        />
       </div>
     </Container>
   );
